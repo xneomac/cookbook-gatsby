@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 
+interface RecipePostTemplateProps {
+  recipe: ReactNode
+  tags: string[]
+  title: string
+  helmet?: ReactNode
+}
+
 export const RecipePostTemplate = ({
-  content,
-  contentComponent,
-  description,
+  recipe,
   tags,
   title,
   helmet,
-}) => {
+}: RecipePostTemplateProps) => {
 
   return (
     <section className="section">
@@ -21,7 +26,6 @@ export const RecipePostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <p>{description}</p>
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
@@ -41,38 +45,47 @@ export const RecipePostTemplate = ({
   )
 }
 
-const RecipePost = ({ data }) => {
-  const { markdownRemark: post } = data
+export default function RecipePost ({ data }: Props)  {
+  const { markdownRemark: recipe } = data
 
   return (
-    <div>
-      //@ts-ignore
       <RecipePostTemplate
-        content={post.html}
-        description={post.frontmatter.description}
+        recipe={recipe.html}
         helmet={
-          <Helmet titleTemplate="%s | Recipe">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
+          <Helmet>
+            <title>{`${recipe.frontmatter.title}`}</title>
           </Helmet>
         }
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
+        tags={recipe.frontmatter.tags}
+        title={recipe.frontmatter.title}
       />
-    </div>
   )
 }
 
-export default RecipePost
+interface Props {
+  data: {
+    markdownRemark: {
+      id: string
+      html: ReactNode
+      frontmatter: {
+        title: string
+        tags: string[]
+      }
+
+    }
+  }
+}
+
 
 export const pageQuery = graphql`
   query RecipePostByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
+      frontmatter {
+        title
+        tags
+      }
     }
   }
 `
