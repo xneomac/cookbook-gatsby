@@ -46,6 +46,7 @@ const RecipePost = ({ data }) => {
 
   return (
     <div>
+      //@ts-ignore
       <RecipePostTemplate
         content={post.html}
         description={post.frontmatter.description}

@@ -1,8 +1,8 @@
 ---
 templateKey: 'recipe-post'
-title: 'Just in: small batch of Jamaican Blue Mountain in store next week'
+title: 'Pâte à pizza'
 source: https://www.marmiton.org/recettes/recette_pate-a-pizza-epaisse-et-moelleuse_58761.aspx
-image: https://assets.afcdn.com/recipe/20160531/11743_w600.jpg
+image: /img/pate-a-pizza.jpg
 duration: 30min
 servings: 4
 ingredients:
