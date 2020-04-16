@@ -38,6 +38,7 @@ export default function Search({ tags, onTagsChange, onSearchChange }: Props) {
       <TextField
         label="Rechercher une recette"
         variant="outlined"
+        color="secondary"
         onChange={e => onSearchChange?.(e.target.value)}
       />
 
@@ -48,6 +49,7 @@ export default function Search({ tags, onTagsChange, onSearchChange }: Props) {
             <Tag
               key={tag}
               name={tag}
+              color="secondary"
               selected={isSelected}
               onClick={() => handleTagSelected(tag)}
             />

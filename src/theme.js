@@ -7,7 +7,8 @@ export default createMuiTheme({
     fontSize: 18
   },
   palette: {
-    primary: deepPurple
+    primary: deepPurple,
+    secondary: {main: "#fff"}
   },
   overrides: {
     MuiOutlinedInput: {
