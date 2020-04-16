@@ -1,31 +1,31 @@
-import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/styles";
-import { create } from "jss";
-import { jssPreset, StylesProvider } from "@material-ui/styles";
-import theme from "../theme";
+import React from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider } from '@material-ui/styles'
+import { create } from 'jss'
+import { jssPreset, StylesProvider } from '@material-ui/styles'
+import theme from '../theme'
 
 export default class PreviewContainer extends React.Component {
   state = {
     ready: false,
-  };
+  }
 
-  handleRef = (ref) => {
-    const ownerDocument = ref ? ref.ownerDocument : null;
+  handleRef = ref => {
+    const ownerDocument = ref ? ref.ownerDocument : null
     this.setState({
       ready: true,
       jss: create({
         ...jssPreset(),
         insertionPoint: ownerDocument
-          ? ownerDocument.querySelector("#demo-frame-jss")
+          ? ownerDocument.querySelector('#demo-frame-jss')
           : null,
       }),
       sheetsManager: new Map(),
-    });
-  };
+    })
+  }
 
   render() {
-    const { children } = this.props;
+    const { children } = this.props
 
     return (
       <React.Fragment>
@@ -46,6 +46,6 @@ export default class PreviewContainer extends React.Component {
           </StylesProvider>
         ) : null}
       </React.Fragment>
-    );
+    )
   }
 }

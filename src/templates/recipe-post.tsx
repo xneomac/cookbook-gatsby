@@ -1,31 +1,31 @@
-import React, { ReactNode, FunctionComponent } from "react";
-import Helmet from "react-helmet";
-import { graphql, Link } from "gatsby";
-import { styled, Theme, Button, Typography, Box } from "@material-ui/core";
-import Tag from "../components/Tag";
-import BackIcon from "@material-ui/icons/ArrowBackIos";
-import Ingredients from "../components/Ingredients";
-import Content, { HTMLContent } from "../components/Content";
+import React, { ReactNode, FunctionComponent } from 'react'
+import Helmet from 'react-helmet'
+import { graphql, Link } from 'gatsby'
+import { styled, Theme, Button, Typography, Box } from '@material-ui/core'
+import Tag from '../components/Tag'
+import BackIcon from '@material-ui/icons/ArrowBackIos'
+import Ingredients from '../components/Ingredients'
+import Content, { HTMLContent } from '../components/Content'
 
-const Root = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  backgroundColor: "#FFFBFB",
-  [theme.breakpoints.up("md")]: {
-    height: "100vh",
-    flexDirection: "row",
+const Root = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: '#FFFBFB',
+  [theme.breakpoints.up('md')]: {
+    height: '100vh',
+    flexDirection: 'row',
   },
-}));
+}))
 
-const LeftPanel = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  [theme.breakpoints.up("md")]: {
+const LeftPanel = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  [theme.breakpoints.up('md')]: {
     padding: theme.spacing(1),
-    overflowY: "auto",
-    backgroundColor: "#5D3352 ",
+    overflowY: 'auto',
+    backgroundColor: '#5D3352 ',
     color: theme.palette.common.white,
-    "& *": {
+    '& *': {
       color: theme.palette.common.white,
     },
     boxShadow: theme.shadows[4],
@@ -33,58 +33,58 @@ const LeftPanel = styled("div")(({ theme }) => ({
     maxWidth: 300,
     marginRight: theme.spacing(2),
   },
-}));
+}))
 
-const LeftPanelContent = styled("div")(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    backgroundColor: "#5D3352",
+const LeftPanelContent = styled('div')(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    backgroundColor: '#5D3352',
     color: theme.palette.common.white,
-    "& *": {
+    '& *': {
       color: theme.palette.common.white,
     },
     boxShadow: theme.shadows[4],
     padding: theme.spacing(2),
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up('md')]: {
     marginTop: theme.spacing(4),
     padding: theme.spacing(0, 4, 0, 2),
   },
-}));
+}))
 
-const Body = styled("div")(({ theme }) => ({
+const Body = styled('div')(({ theme }) => ({
   flexGrow: 1,
-  overflowY: "auto",
-  textAlign: "justify",
+  overflowY: 'auto',
+  textAlign: 'justify',
   padding: theme.spacing(2),
-}));
+}))
 
-const TitleContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-}));
+const TitleContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+}))
 
-type ImageProps = { src: string };
+type ImageProps = { src: string }
 const Image = styled(({ src, ...props }: ImageProps) => <div {...props} />)(
   ({ theme, src }: ImageProps & { theme: Theme }) => ({
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up('md')]: {
       height: 150,
     },
     height: 300,
-    width: "100%",
+    width: '100%',
     backgroundImage: `url(${src})`,
-    backgroundPosition: "center",
-    backgroundSize: "contain",
-    backgroundRepeat: "no-repeat",
+    backgroundPosition: 'center',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
   })
-);
+)
 
-const TagsContainer = styled("div")(({ theme }) => ({
-  "& > *": {
+const TagsContainer = styled('div')(({ theme }) => ({
+  '& > *': {
     marginRight: theme.spacing(1),
   },
-}));
+}))
 
-type TitleProps = { title: string; tags: string[] };
+type TitleProps = { title: string; tags: string[] }
 function Title({ title, tags }: TitleProps) {
   return (
     <>
@@ -94,12 +94,12 @@ function Title({ title, tags }: TitleProps) {
         </Typography>
       </TitleContainer>
       <TagsContainer>
-        {tags.map((tag) => (
+        {tags.map(tag => (
           <Tag key={tag} name={tag} />
         ))}
       </TagsContainer>
     </>
-  );
+  )
 }
 
 function BackToHome() {
@@ -107,23 +107,23 @@ function BackToHome() {
     <Link to="/">
       <Button startIcon={<BackIcon />}>Retour</Button>
     </Link>
-  );
+  )
 }
 
 interface RecipePostTemplateProps {
-  content: string | ReactNode;
-  title: string;
-  duration: string;
-  servings: number;
-  ingredients: string[];
-  image: string;
-  tags: string[];
-  contentComponent?: FunctionComponent<{ content: string | ReactNode }>;
-  helmet?: ReactNode;
+  content: string | ReactNode
+  title: string
+  duration: string
+  servings: number
+  ingredients: string[]
+  image: string
+  tags: string[]
+  contentComponent?: FunctionComponent<{ content: string | ReactNode }>
+  helmet?: ReactNode
 }
 
-const visibleOnlyOnMobile = { xs: "block", sm: "block", md: "none" };
-const hiddenOnlyOnMobile = { xs: "none", sm: "none", md: "block" };
+const visibleOnlyOnMobile = { xs: 'block', sm: 'block', md: 'none' }
+const hiddenOnlyOnMobile = { xs: 'none', sm: 'none', md: 'block' }
 
 export const RecipePostTemplate = ({
   content,
@@ -136,11 +136,11 @@ export const RecipePostTemplate = ({
   tags,
   helmet,
 }: RecipePostTemplateProps) => {
-  const RecipeContent = contentComponent || Content;
+  const RecipeContent = contentComponent || Content
 
   return (
     <Root>
-      {helmet || ""}
+      {helmet || ''}
       <Box p={2} display={visibleOnlyOnMobile}>
         <BackToHome />
         <Title title={title} tags={tags} />
@@ -158,7 +158,7 @@ export const RecipePostTemplate = ({
           {duration && (
             <Typography variant="subtitle1">
               <Typography variant="h6" component="span">
-                Durée :{" "}
+                Durée :{' '}
               </Typography>
               {duration}
             </Typography>
@@ -182,11 +182,11 @@ export const RecipePostTemplate = ({
         <RecipeContent content={content} />
       </Body>
     </Root>
-  );
-};
+  )
+}
 
 export default function RecipePost({ data }: Props) {
-  const { markdownRemark: recipe } = data;
+  const { markdownRemark: recipe } = data
 
   return (
     <RecipePostTemplate
@@ -204,26 +204,26 @@ export default function RecipePost({ data }: Props) {
       tags={recipe.frontmatter.tags}
       title={recipe.frontmatter.title}
     />
-  );
+  )
 }
 
 interface Props {
   data: {
     markdownRemark: {
-      id: string;
-      html: string;
+      id: string
+      html: string
       frontmatter: {
-        title: string;
-        duration: string;
-        servings: number;
-        ingredients: string[];
+        title: string
+        duration: string
+        servings: number
+        ingredients: string[]
         image: {
-          childImageSharp: { fluid: { src: string } };
-        };
-        tags: string[];
-      };
-    };
-  };
+          childImageSharp: { fluid: { src: string } }
+        }
+        tags: string[]
+      }
+    }
+  }
 }
 
 export const pageQuery = graphql`
@@ -247,4 +247,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import Tag from "./Tag";
-import { styled, TextField } from "@material-ui/core";
+import React, { useState } from 'react'
+import Tag from './Tag'
+import { styled, TextField } from '@material-ui/core'
 
-const TagsContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
+const TagsContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
   margin: theme.spacing(2, 0),
-  "& > *": {
-    margin: 4
-  }
-}));
+  '& > *': {
+    margin: 4,
+  },
+}))
 
 interface Props {
-  tags: string[];
-  onTagsChange?: (tags: string[]) => void;
-  onSearchChange?: (searchStringselectedTags: string) => void;
+  tags: string[]
+  onTagsChange?: (tags: string[]) => void
+  onSearchChange?: (searchStringselectedTags: string) => void
 }
 
 export default function Search({ tags, onTagsChange, onSearchChange }: Props) {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   function handleTagSelected(tag: string) {
-    let newSelectedTags;
+    let newSelectedTags
     if (selectedTags.includes(tag)) {
-      newSelectedTags = selectedTags.filter(t => t !== tag);
+      newSelectedTags = selectedTags.filter(t => t !== tag)
     } else {
-      newSelectedTags = [...selectedTags, tag];
+      newSelectedTags = [...selectedTags, tag]
     }
 
-    setSelectedTags(newSelectedTags);
-    onTagsChange?.(newSelectedTags);
+    setSelectedTags(newSelectedTags)
+    onTagsChange?.(newSelectedTags)
   }
 
   return (
@@ -44,7 +44,7 @@ export default function Search({ tags, onTagsChange, onSearchChange }: Props) {
 
       <TagsContainer>
         {tags.map(tag => {
-          const isSelected = selectedTags.includes(tag);
+          const isSelected = selectedTags.includes(tag)
           return (
             <Tag
               key={tag}
@@ -53,9 +53,9 @@ export default function Search({ tags, onTagsChange, onSearchChange }: Props) {
               selected={isSelected}
               onClick={() => handleTagSelected(tag)}
             />
-          );
+          )
         })}
       </TagsContainer>
     </>
-  );
+  )
 }

@@ -1,20 +1,19 @@
 ---
 templateKey: 'recipe-post'
-title: 'Pâte à pizza'
+title: Pâte à pizza
 source: https://www.marmiton.org/recettes/recette_pate-a-pizza-epaisse-et-moelleuse_58761.aspx
 image: /img/pate-a-pizza.jpg
 duration: 30min
 servings: 4
 ingredients:
-  - 350g de farine type 55
-  - 2cuillères à café de sel
-  - 1sachet de levure boulangère
-  - 3cuillères à soupe d'huile d'olive
-  - 20cl d'eau tiède
+- 350g de farine type 55
+- 2cuillères à café de sel
+- 1sachet de levure boulangère
+- 3cuillères à soupe d'huile d'olive
+- 20cl d'eau tiède
 tags:
   - salé
 ---
-
 Mettre 350 g de farine dans un grand saladier puis ajouter successivement le sel, la levure boulangère et l'huile d'olive.
 
 Verser petit à petit l'eau tiède tout en mélangeant avec une cuillère en bois.

@@ -1,28 +1,28 @@
-import { createMuiTheme } from "@material-ui/core";
-import { deepPurple } from "@material-ui/core/colors";
+import { createMuiTheme } from '@material-ui/core'
+import { deepPurple } from '@material-ui/core/colors'
 
 export default createMuiTheme({
   typography: {
     fontFamily: "'Baloo Thambi 2', cursive",
-    fontSize: 18
+    fontSize: 18,
   },
   palette: {
     primary: deepPurple,
-    secondary: {main: "#fff"}
+    secondary: { main: '#fff' },
   },
   overrides: {
     MuiOutlinedInput: {
       notchedOutline: {
-        borderColor: "white !important"
+        borderColor: 'white !important',
       },
       input: {
-        color: "white !important"
-      }
+        color: 'white !important',
+      },
     },
     MuiFormLabel: {
       root: {
-        color: "white !important"
-      }
-    }
-  }
-});
+        color: 'white !important',
+      },
+    },
+  },
+})
