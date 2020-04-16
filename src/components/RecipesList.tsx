@@ -1,5 +1,4 @@
 import React from "react";
-import { Recipe } from "../types";
 import {
   Card,
   Typography,
@@ -74,9 +73,11 @@ const TagsContainer = styled("div")(({ theme }) => ({
 
 interface Props {
   recipes: Array<{
+    id: string
     image: string;
     title: string;
     tags: string[];
+    url: string
   }>;
   selectedTags: string[];
 }
@@ -93,7 +94,7 @@ export default function RecipesList({ recipes, selectedTags }: Props) {
   return (
     <RecipesContainer>
       {recipes.map((recipe) => (
-        <Link key={recipe.title} to={`/recettes/${recipe.title}`}>
+        <Link key={recipe.id} to={recipe.url}>
           <Card variant="outlined">
             <CustomCardMedia image={recipe.image} />
             <Box m={1}>

@@ -48,6 +48,7 @@ export interface Recipe {
   title: string;
   tags: string[];
   image: string;
+  url: string
 }
 
 export default function IndexPage({ data }: Props) {
@@ -59,6 +60,7 @@ export default function IndexPage({ data }: Props) {
     title: edge.node.frontmatter.title,
     tags: edge.node.frontmatter.tags,
     image: edge.node.frontmatter.image.childImageSharp.fluid.src,
+    url: edge.node.fields.slug
   }));
 
   const tags = useMemo(() => {
@@ -125,9 +127,11 @@ export default function IndexPage({ data }: Props) {
           </MuiLink>
         </Typography>
         <Typography variant="caption" align="center">
-          <div><MuiLink href="/admin/" color="textSecondary">
-            Admin
-          </MuiLink></div>
+          <div>
+            <MuiLink href="/admin/" color="textSecondary">
+              Admin
+            </MuiLink>
+          </div>
         </Typography>
       </Box>
     </Root>
@@ -148,6 +152,9 @@ interface Props {
       edges: Array<{
         node: {
           id: string;
+          fields: {
+            slug: string;
+          };
           frontmatter: {
             title: string;
             tags: string[];
@@ -181,6 +188,9 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
             title
             tags

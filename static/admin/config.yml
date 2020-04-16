@@ -12,8 +12,8 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "recipe"
-    label: "Recipe"
+  - name: "recipes"
+    label: "Recettes"
     folder: "src/pages/recipes"
     create: true
     slug: "{{slug}}"
@@ -24,9 +24,9 @@ collections:
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Durée", name: "duration", widget: "string"}
       - {label: "Nombre de personnes", name: "servings", widget: "number"}
-      - {label: "Ingrédients", name: "ingredients", widget: "list"}
+      - {label: "Ingrédients", name: "ingredients", widget: "list", collapsed: false}
       - {label: "Recette", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "Tags", name: "tags", widget: "list", collapsed: false}
 
   - name: "pages"
     label: "Pages"

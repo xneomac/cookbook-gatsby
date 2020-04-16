@@ -1,23 +1,48 @@
 import React, { useState, useMemo } from "react";
 import { Typography, IconButton, styled } from "@material-ui/core";
-import { RecipeIngredient } from "../types";
 import PlusIcon from "@material-ui/icons/Add";
 import MinusIcon from "@material-ui/icons/Remove";
+
+interface Ingredient {
+  quantity?: number;
+  unit?: string;
+  name: string;
+}
+
+function strToIngredient(ingredient: string): Ingredient | undefined {
+  const regex = /^([0-9.]+)([a-zA-Zèàé]*) (.*)$/gi;
+
+  if (regex.test(ingredient)) {
+    // reset regex
+    regex.lastIndex = 0;
+    const args = regex.exec(ingredient);
+    if (!args) {
+      return undefined;
+    }
+    return {
+      quantity: Number.parseFloat(args[1]),
+      unit: args[2] || undefined,
+      name: args[3],
+    };
+  } else {
+    return { name: ingredient };
+  }
+}
 
 const ServingsSelector = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
-  width: 150
+  width: 150,
 }));
 
 const Unit = styled("span")({
-  fontWeight: 500
+  fontWeight: 500,
 });
 
 interface Props {
-  ingredients: RecipeIngredient[];
+  ingredients: string[];
   servings: number;
 }
 
@@ -31,15 +56,11 @@ function formatNumber(number: number): string {
 
 export default function Ingredients({
   ingredients: ingredientsProp,
-  servings: servingsProp
+  servings: servingsProp,
 }: Props) {
   const [servings, setServings] = useState<number>(servingsProp);
   const ingredients = useMemo(
-    () =>
-      ingredientsProp.map(i => ({
-        ...i,
-        quantity: i.quantity && (i.quantity * servings) / servingsProp
-      })),
+    () => ingredientsProp.map(strToIngredient).filter((x) => x) as Ingredient[],
     [ingredientsProp, servings, servingsProp]
   );
 
