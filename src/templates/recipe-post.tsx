@@ -1,15 +1,7 @@
 import React, { ReactNode, FunctionComponent } from "react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
-import {
-  styled,
-  Theme,
-  Button,
-  Typography,
-  useMediaQuery,
-  useTheme,
-  Box,
-} from "@material-ui/core";
+import { styled, Theme, Button, Typography, Box } from "@material-ui/core";
 import Tag from "../components/Tag";
 import BackIcon from "@material-ui/icons/ArrowBackIos";
 import Ingredients from "../components/Ingredients";
@@ -126,9 +118,12 @@ interface RecipePostTemplateProps {
   ingredients: string[];
   image: string;
   tags: string[];
-  contentComponent?: FunctionComponent<{content: string | ReactNode}>;
+  contentComponent?: FunctionComponent<{ content: string | ReactNode }>;
   helmet?: ReactNode;
 }
+
+const visibleOnlyOnMobile = { xs: "block", sm: "block", md: "none" };
+const hiddenOnlyOnMobile = { xs: "none", sm: "none", md: "block" };
 
 export const RecipePostTemplate = ({
   content,
@@ -141,27 +136,25 @@ export const RecipePostTemplate = ({
   tags,
   helmet,
 }: RecipePostTemplateProps) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const RecipeContent = contentComponent || Content;
 
   return (
     <Root>
       {helmet || ""}
-      {isMobile && (
-        <Box p={2}>
-          <BackToHome />
-          <Title title={title} tags={tags} />
-        </Box>
-      )}
+      <Box p={2} display={visibleOnlyOnMobile}>
+        <BackToHome />
+        <Title title={title} tags={tags} />
+      </Box>
       <LeftPanel>
-        {!isMobile && <BackToHome />}
+        <Box display={hiddenOnlyOnMobile}>
+          <BackToHome />
+        </Box>
         <LeftPanelContent>
-          {!isMobile && (
+          <Box display={hiddenOnlyOnMobile}>
             <Box display="flex" justifyContent="center" py={1}>
               {image && <Image src={image} />}
             </Box>
-          )}
+          </Box>
           {duration && (
             <Typography variant="subtitle1">
               <Typography variant="h6" component="span">
@@ -175,15 +168,16 @@ export const RecipePostTemplate = ({
       </LeftPanel>
 
       <Body>
-        {!isMobile && <Title title={title} tags={tags} />}
+        <Box display={hiddenOnlyOnMobile}>
+          <Title title={title} tags={tags} />
+        </Box>
 
-        {isMobile ? (
+        <Box display={visibleOnlyOnMobile}>
           <Box display="flex" justifyContent="center" py={1}>
             {image && <Image src={image} />}
           </Box>
-        ) : (
-          <Box pt={4} />
-        )}
+        </Box>
+        <Box display={hiddenOnlyOnMobile} pt={4} />
 
         <RecipeContent content={content} />
       </Body>
