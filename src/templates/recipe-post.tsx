@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, FunctionComponent } from "react";
 import Helmet from "react-helmet";
 import { graphql, Link } from "gatsby";
 import {
@@ -13,6 +13,7 @@ import {
 import Tag from "../components/Tag";
 import BackIcon from "@material-ui/icons/ArrowBackIos";
 import Ingredients from "../components/Ingredients";
+import Content, { HTMLContent } from "../components/Content";
 
 const Root = styled("div")(({ theme }) => ({
   display: "flex",
@@ -91,8 +92,8 @@ const TagsContainer = styled("div")(({ theme }) => ({
   },
 }));
 
-type TitleProps =  { title: string, tags: string[] }
-function Title({ title, tags }:TitleProps) {
+type TitleProps = { title: string; tags: string[] };
+function Title({ title, tags }: TitleProps) {
   return (
     <>
       <TitleContainer>
@@ -118,18 +119,20 @@ function BackToHome() {
 }
 
 interface RecipePostTemplateProps {
-  recipe: string;
+  content: string | ReactNode;
   title: string;
   duration: string;
   servings: number;
   ingredients: string[];
   image: string;
   tags: string[];
+  contentComponent?: FunctionComponent<{content: string | ReactNode}>;
   helmet?: ReactNode;
 }
 
 export const RecipePostTemplate = ({
-  recipe,
+  content,
+  contentComponent,
   title,
   duration,
   servings,
@@ -140,6 +143,7 @@ export const RecipePostTemplate = ({
 }: RecipePostTemplateProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const RecipeContent = contentComponent || Content;
 
   return (
     <Root>
@@ -166,10 +170,7 @@ export const RecipePostTemplate = ({
               {duration}
             </Typography>
           )}
-          <Ingredients
-            ingredients={ingredients}
-            servings={servings}
-          />
+          <Ingredients ingredients={ingredients} servings={servings} />
         </LeftPanelContent>
       </LeftPanel>
 
@@ -184,7 +185,7 @@ export const RecipePostTemplate = ({
           <Box pt={4} />
         )}
 
-        <Typography dangerouslySetInnerHTML={{ __html: recipe }} />
+        <RecipeContent content={content} />
       </Body>
     </Root>
   );
@@ -195,7 +196,8 @@ export default function RecipePost({ data }: Props) {
 
   return (
     <RecipePostTemplate
-      recipe={recipe.html}
+      content={recipe.html}
+      contentComponent={HTMLContent}
       helmet={
         <Helmet>
           <title>{`${recipe.frontmatter.title}`}</title>

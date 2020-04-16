@@ -6,7 +6,7 @@ const RecipePostPreview = ({ entry, getAsset, widgetFor }) => {
   const ingredients = entry.getIn(["data", "ingredients"]);
   return (
     <RecipePostTemplate
-      recipe={widgetFor("recipe")}
+      content={widgetFor("body")}
       title={entry.getIn(["data", "title"])}
       duration={entry.getIn(["data", "duration"])}
       servings={entry.getIn(["data", "servings"])}
