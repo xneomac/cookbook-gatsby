@@ -105,10 +105,7 @@ export default function RecipesList({ recipes, selectedTags }: Props) {
                 <Tag
                   key={tag}
                   name={tag}
-                  color="#cacaca"
-                  selected={selectedTags.some(
-                    (selectedTag) => selectedTag === tag
-                  )}
+                  selected={selectedTags.includes(tag)}
                   size="small"
                 />
               ))}

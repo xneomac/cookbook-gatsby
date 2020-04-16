@@ -59,10 +59,16 @@ export default function Ingredients({
   servings: servingsProp,
 }: Props) {
   const [servings, setServings] = useState<number>(servingsProp);
-  const ingredients = useMemo(
+  const parsedIngredients = useMemo(
     () => ingredientsProp.map(strToIngredient).filter((x) => x) as Ingredient[],
     [ingredientsProp, servings, servingsProp]
   );
+  const ingredients = useMemo(() => {
+    return parsedIngredients.map((i) => ({
+      ...i,
+      quantity: i.quantity && (i.quantity * servings) / servingsProp,
+    }));
+  }, [parsedIngredients, servings, servingsProp]);
 
   return (
     <div>

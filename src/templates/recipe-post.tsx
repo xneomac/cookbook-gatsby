@@ -102,7 +102,7 @@ function Title({ title, tags }:TitleProps) {
       </TitleContainer>
       <TagsContainer>
         {tags.map((tag) => (
-          <Tag key={tag} name={tag} selected />
+          <Tag key={tag} name={tag} />
         ))}
       </TagsContainer>
     </>

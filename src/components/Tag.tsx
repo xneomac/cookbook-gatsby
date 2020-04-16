@@ -6,24 +6,18 @@ import {
   ThemeProvider
 } from "@material-ui/core";
 
-interface Props extends Omit<ChipProps, "label" | "color" | "variant"> {
+interface Props extends Omit<ChipProps, "label" | "variant"> {
   name: string
-  color?: string;
   selected?: boolean;
 }
 
-export default function Tag({ name, color, selected, ...props }: Props) {
-  const theme = createMuiTheme({
-    palette: { primary: { main: color || "#fff" } }
-  });
+export default function Tag({ name, selected, ...props }: Props) {
   return (
-    <ThemeProvider theme={theme}>
       <Chip
         variant={selected ? "default" : "outlined"}
         color="primary"
         label={name}
         {...props}
       />
-    </ThemeProvider>
   );
 }

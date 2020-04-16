@@ -38,7 +38,7 @@ const HeroTitle = styled((props) => (
 
 const fuseOptions = {
   limit: 10,
-  keys: ["name", "detailsMarkdown"],
+  keys: ["title"],
   isCaseSensitive: false,
   includeMatches: true,
 };
@@ -116,7 +116,7 @@ export default function IndexPage({ data }: Props) {
 
       <Box flexGrow={1} />
       <Box mb={4} width="100%">
-        <Typography variant="h6" align="center">
+        <Typography variant="subtitle1" align="center">
           Fait avec amour par{" "}
           <MuiLink
             href="https://github.com/JulienUsson/"

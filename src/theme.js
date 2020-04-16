@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
+import { deepPurple } from "@material-ui/core/colors";
 
 export default createMuiTheme({
   typography: {
@@ -7,7 +7,7 @@ export default createMuiTheme({
     fontSize: 18
   },
   palette: {
-    primary: red
+    primary: deepPurple
   },
   overrides: {
     MuiOutlinedInput: {
