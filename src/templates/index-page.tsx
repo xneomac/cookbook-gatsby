@@ -71,7 +71,7 @@ export default function IndexPage({ data }: Props) {
       recipe.tags.forEach((t) => acc.add(t));
       return acc;
     }, new Set<string>());
-    return [...tags];
+    return [...tags].sort();
   }, [recipes]);
 
   const filteredRecipes = useMemo(() => {
