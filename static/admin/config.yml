@@ -9,7 +9,6 @@ backend:
     deleteMedia: '[skip ci] Delete “{{path}}”'
 
 media_folder: static/img
-public_folder: /img
 
 collections:
   - name: "recipes"
@@ -24,9 +23,9 @@ collections:
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Durée", name: "duration", widget: "string"}
       - {label: "Nombre de personnes", name: "servings", widget: "number"}
-      - {label: "Ingrédients", name: "ingredients", widget: "list", collapsed: false}
+      - {label: "Ingrédients", name: "ingredients", widget: "list"}
       - {label: "Recette", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list", collapsed: false}
+      - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "pages"
     label: "Pages"
