@@ -1,6 +1,6 @@
 ---
 templateKey: recipe-post
-title: Crumble de courgette
+title: Crumble de courgettes
 source: https://www.cuisineactuelle.fr/recettes/crumble-de-courgettes-aux-tomates-confites-203674
 image: /static/img/93819713_656842748194750_5366778935927373824_n.jpg
 duration: 50min
