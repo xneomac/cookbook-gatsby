@@ -1,17 +1,17 @@
 ---
-templateKey: 'recipe-post'
+templateKey: recipe-post
 title: Bavarois fraises spéculoos
 source: http://lespatisseriesdaurelie.over-blog.com/2017/06/bavarois-aux-fraises-sur-croquant-speculoos.html
 image: /img/bavarois-fraises-speculoos.jpg
-duration: 1h15
+duration: 4h
 servings: 6
 ingredients:
-- 200g de spéculoos
-- 60g de beurre
-- 800g de fraises
-- 155g de sucre en poudre
-- 8 feuilles de gélatine
-- 40cl de crème entière liquide
+  - 200g de spéculoos
+  - 60g de beurre
+  - 800g de fraises
+  - 155g de sucre en poudre
+  - 8 feuilles de gélatine
+  - 40cl de crème entière liquide
 tags:
   - sucré
 ---
