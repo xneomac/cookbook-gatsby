@@ -200,7 +200,7 @@ export default function RecipePost({ data }: Props) {
       duration={recipe.frontmatter.duration}
       servings={recipe.frontmatter.servings}
       ingredients={recipe.frontmatter.ingredients}
-      image={recipe.frontmatter.image.publicURL}
+      image={recipe.frontmatter.image.childImageSharp.fluid.src}
       tags={recipe.frontmatter.tags}
       title={recipe.frontmatter.title}
     />
@@ -217,7 +217,9 @@ interface Props {
         duration: string
         servings: number
         ingredients: string[]
-        image: { publicURL: string }
+        image: {
+          childImageSharp: { fluid: { src: string } }
+        }
         tags: string[]
       }
     }
@@ -235,7 +237,11 @@ export const pageQuery = graphql`
         servings
         ingredients
         image {
-          publicURL
+          childImageSharp {
+            fluid(maxWidth: 2048, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
         tags
       }
