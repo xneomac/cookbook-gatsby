@@ -59,7 +59,7 @@ export default function IndexPage({ data }: Props) {
     id: edge.node.id,
     title: edge.node.frontmatter.title,
     tags: edge.node.frontmatter.tags,
-    image: edge.node.frontmatter.image.childImageSharp.fluid.src,
+    image: edge.node.frontmatter.image.publicURL,
     url: edge.node.fields.slug,
   }))
 
@@ -102,7 +102,7 @@ export default function IndexPage({ data }: Props) {
         <title>{data.markdownRemark.frontmatter.title}</title>
       </Helmet>
       <Hero
-        image={data.markdownRemark.frontmatter.image.childImageSharp.fluid.src}
+        image={data.markdownRemark.frontmatter.image.publicURL}
       >
         <HeroTitle>{data.markdownRemark.frontmatter.title}</HeroTitle>
         <Search
@@ -143,9 +143,7 @@ interface Props {
     markdownRemark: {
       frontmatter: {
         title: string
-        image: {
-          childImageSharp: { fluid: { src: string } }
-        }
+        image: { publicURL: string } 
       }
     }
     allMarkdownRemark: {
@@ -158,9 +156,7 @@ interface Props {
           frontmatter: {
             title: string
             tags: string[]
-            image: {
-              childImageSharp: { fluid: { src: string } }
-            }
+            image: { publicURL: string } 
           }
         }
       }>
@@ -174,11 +170,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+          publicURL
         }
       }
     }
@@ -195,11 +187,7 @@ export const pageQuery = graphql`
             title
             tags
             image {
-              childImageSharp {
-                fluid(maxWidth: 512, quality: 80) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
+              publicURL
             }
           }
         }
