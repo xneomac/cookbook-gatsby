@@ -11,10 +11,10 @@ const RecipePostPreview = ({ entry, getAsset, widgetFor }) => {
         content={widgetFor('body')}
         title={entry.getIn(['data', 'title'])}
         duration={entry.getIn(['data', 'duration'])}
-        servings={entry.getIn(['data', 'servings'])}
-        ingredients={ingredients && ingredients.toJS()}
+        servings={entry.getIn(['data', 'servings']) || 1}
+        ingredients={ingredients ? ingredients.toJS(): []}
         image={getAsset(entry.getIn(['data', 'image']))}
-        tags={tags && tags.toJS()}
+        tags={tags ? tags.toJS() : [] }
       />
     </PreviewContainer>
   )

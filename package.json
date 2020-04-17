@@ -3,6 +3,7 @@
   "description": "A cookbook made with Gatsby and Netlify CMS",
   "version": "0.1.0",
   "author": "Julien Usson",
+  "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@material-ui/icons": "^4.9.1",
