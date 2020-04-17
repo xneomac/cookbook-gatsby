@@ -49,7 +49,7 @@ export default function Search({ tags, onTagsChange, onSearchChange }: Props) {
             <Tag
               key={tag}
               name={tag}
-              color="secondary"
+              color={isSelected ? undefined : "#fff"}
               selected={isSelected}
               onClick={() => handleTagSelected(tag)}
             />
