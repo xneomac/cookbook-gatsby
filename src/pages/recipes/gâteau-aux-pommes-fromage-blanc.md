@@ -1,6 +1,6 @@
 ---
 templateKey: recipe-post
-title: Gâteau aux pommes - fromage blanc
+title: Gâteau pommes - fromage blanc
 source: https://www.cuisineactuelle.fr/recettes/gateau-aux-pommes-facile-au-fromage-blanc-229266
 image: /static/img/téléchargement.jpg
 duration: 40min
