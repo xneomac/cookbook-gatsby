@@ -12,7 +12,7 @@ ingredients:
   - 1 oignon
   - sel et poivre
 tags:
-  - Salé
+  - salé
 ---
 1. Préchauffez le four à th.6 (180°C).
 
