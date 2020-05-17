@@ -12,7 +12,7 @@ ingredients:
   - 45g de sucre
   - 3 jaunes d'oeufs
   - 2 feuilles de gélatine
-  - 16 boudoirs
+  - 30 boudoirs
   - 250g d'eau
   - 2 poires
   - 60g de nutella
