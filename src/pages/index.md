@@ -1,5 +1,5 @@
 ---
 templateKey: index-page
-title: Les recettes de Maud
+title: I want to share this with you
 image: /img/hero.jpg
 ---
