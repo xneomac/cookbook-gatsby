@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: JulienUsson/cookbook-gatsby
+  repo: xneomac/cookbook-gatsby
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'
