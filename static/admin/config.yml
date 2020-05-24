@@ -20,7 +20,7 @@ collections:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "recipe-post"}
       - {label: "Titre", name: "title", widget: "string"}
       - {label: "Source", name: "source", widget: "string", required: false}
-      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Image", name: "image", widget: "image"}
       - {label: "Durée", name: "duration", widget: "string", required: false}
       - {label: "Nombre de personnes", name: "servings", widget: "number"}
       - {label: "Ingrédients", name: "ingredients", widget: "list"}

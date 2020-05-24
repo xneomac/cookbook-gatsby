@@ -1,7 +1,7 @@
 ---
 templateKey: recipe-post
 title: Kanelbullar
-image: ""
+image: /static/img/empty.jpg
 duration: ""
 servings: 2
 ingredients:
