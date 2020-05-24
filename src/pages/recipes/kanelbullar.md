@@ -1,8 +1,8 @@
 ---
 templateKey: recipe-post
 title: Kanelbullar
-image: /static/img/12788_w648h414c1cx983cy1500.jpg
-duration: 10 minutes
+image: ""
+duration: ""
 servings: 2
 ingredients:
   - 4 g levure de boulanger (x3 pour fraiche)
